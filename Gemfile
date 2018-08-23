@@ -5,8 +5,8 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -22,6 +22,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# Add bootstrap
+gem 'bootstrap', '~> 4.1.3'
+# Add slim
+gem 'slim'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -39,6 +44,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #Add debug tools
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+
+  #Add rspec-rails
+  gem 'rspec-rails'
+
 end
 
 group :development do
