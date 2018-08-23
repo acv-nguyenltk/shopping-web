@@ -25,8 +25,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Add bootstrap
 gem 'bootstrap', '~> 4.1.3'
+# Add jquery rails
+gem 'jquery-rails'
 # Add slim
 gem 'slim'
+# Add faker
+gem 'faker'
+# Add kaminari
+gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
