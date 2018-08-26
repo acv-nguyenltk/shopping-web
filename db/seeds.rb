@@ -12,6 +12,12 @@ tables.each do |table|
    )
 end
 
+User.create(
+  email: 'knguyen30111@gmail.com',
+  firstname: 'gen',
+  lastname: 'koi',
+  password: '123456')
+
 2.times do
   category = Category.create(name: Faker::FunnyName.name)
   20.times do

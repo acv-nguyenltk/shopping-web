@@ -10,12 +10,12 @@
 
   <div class="field">
     <%= f.label :firstname %><br />
-    <%= f.email_field :firstname, autofocus: true, autocomplete: "firstname" %>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
   </div>
 
   <div class="field">
     <%= f.label :lastname %><br />
-    <%= f.email_field :lastname, autofocus: true, autocomplete: "lastname" %>
+    <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
