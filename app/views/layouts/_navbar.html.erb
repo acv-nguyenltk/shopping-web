@@ -20,7 +20,7 @@
     </ul>
   <% if current_user %>
     <a class="navbar-brand"><%= link_to current_user.firstname, edit_user_registration_path %></a>
-    <a class="navbar-brand"><%= link_to "Logout", destroy_user_session_path %></a>
+    <a class="navbar-brand"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
   <% else %>
     <a class="navbar-brand"><%= link_to "Register", new_user_registration_path %></a>
     <a class="navbar-brand"><%= link_to "Login", new_user_session_path %></a>
