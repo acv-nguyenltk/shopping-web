@@ -1,0 +1,28 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand
+    = link_to 'Home', root_path
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.dropdown
+        a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+          |  Category
+        .dropdown-menu[aria-labelledby="navbarDropdown"]
+          a.dropdown-item[href="#"]
+            | Action
+          a.dropdown-item[href="#"]
+            | Another action
+          .dropdown-divider
+          a.dropdown-item[href="#"]
+            | Something else here
+    - if current_user
+      a.navbar-brand
+        = link_to current_user.firstname, edit_user_registration_path
+      a.navbar-brand
+        = link_to "Logout", destroy_user_session_path, method: :delete
+    - else
+      a.navbar-brand
+        = link_to "Register", new_user_registration_path
+      a.navbar-brand
+        = link_to "Login", new_user_session_path

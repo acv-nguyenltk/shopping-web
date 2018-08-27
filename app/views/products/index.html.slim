@@ -1,0 +1,10 @@
+= paginate @products
+#product-page.row
+  - @products.each do |product|
+    .card.col-md-3.text-center
+      img.card-img-top alt=("Card image cap") src="#{product.imgUrl}" /
+      .card-body
+        h5.card-title= product.name
+        h5.card-title= product.price
+        a.btn.btn-primary href="#"  Go somewhere
+= paginate @products
