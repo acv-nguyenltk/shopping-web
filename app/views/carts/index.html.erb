@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">quatity</th>
+      <th scope="col">Change quatity</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <% if @cart.present? %>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <input type="number" value="<%= @cart[product.id.to_s] %>" name="quatity">
+          </td>
+          <td>
+            <%= link_to 'Change', cart_change_path(id: product.id, quatity: :quatity), method: :post, class: 'btn btn-primary' %>
+          </td>
+          <td><%= @cart[product.id.to_s] * product.price %></td>
+        </tr>
+      <% end %>
+    <% end %> -->
+  </tbody>
+</table>
+<%= link_to 'Empty Cart', empty_cart_path, method: :delete, class: 'btn btn-primary' %>
