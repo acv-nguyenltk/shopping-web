@@ -7,4 +7,5 @@
         h5.card-title= product.name
         h5.card-title= product.price
         a.btn.btn-primary href="#"  Go somewhere
+        = link_to 'Add this product', cart_add_path(id: product.id), method: :post
 = paginate @products

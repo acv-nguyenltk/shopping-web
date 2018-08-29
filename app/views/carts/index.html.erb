@@ -3,27 +3,28 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
-      <th scope="col">quatity</th>
-      <th scope="col">Change quatity</th>
+      <th scope="col">Quatity</th>
+      <th scope="col">Delete Item</th>
       <th scope="col">Total</th>
     </tr>
   </thead>
   <tbody>
-    <!-- <% if @cart.present? %>
+    <% if session[:carts].present? %>
       <% @products.each do |product| %>
         <tr>
           <td><%= product.name %></td>
           <td><%= product.price %></td>
           <td>
-            <input type="number" value="<%= @cart[product.id.to_s] %>" name="quatity">
+              <%= form_for Cart.new, url: cart_change_path(id: product.id), method: :post do |f| %>
+                <input type="number" value="<%= session[:carts][product.id.to_s] %>" name="quatity">
+                <%= f.submit class: 'btn btn-primary' %>
+              <% end %>
           </td>
-          <td>
-            <%= link_to 'Change', cart_change_path(id: product.id, quatity: :quatity), method: :post, class: 'btn btn-primary' %>
-          </td>
-          <td><%= @cart[product.id.to_s] * product.price %></td>
+          <td><%= link_to 'Delete Item', cart_delete_path(id: product.id), method: :delete , class: 'btn btn-primary'%></td>
+          <td><%= session[:carts][product.id.to_s] * product.price %></td>
         </tr>
       <% end %>
-    <% end %> -->
+    <% end %>
   </tbody>
 </table>
 <%= link_to 'Empty Cart', empty_cart_path, method: :delete, class: 'btn btn-primary' %>
