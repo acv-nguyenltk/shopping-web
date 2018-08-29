@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  before_action :init
   before_action :get_cart
+  after_action :sync_data
   def index
     @products = []
     session[:carts].each do |key, val|
@@ -39,8 +41,24 @@ class CartsController < ApplicationController
     render :index
   end
   private
+    def init
+      session[:carts] ||= Hash.new
+    end
+
     def get_cart
       return if params[:id].blank?
       @product = Product.find(params[:id].to_s)
+    end
+
+    def sync_data
+      if current_user
+        current_user.cart.items = session[:carts] if session[:carts]
+        current_user.cart.save!
+        session[:carts].clear
+      end
+    end
+
+    def merge_data
+
     end
 end
