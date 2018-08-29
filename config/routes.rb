@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resource :products
 
   # Custom cart/session cart
-  get 'cart' => 'cart#index', :as => 'cart_index'
-  post 'cart' => 'cart#change_quatity', as: 'cart_change'
-  post 'cart/add/:id' => 'cart#add', :as => 'cart_add'
-  delete 'cart/remove/:id' => 'cart#delete', :as => 'cart_delete'
-  delete 'cart/empty' => 'cart#empty', :as => 'empty_cart'
+  get 'carts' => 'carts#index', :as => 'cart_index'
+  post 'carts' => 'carts#change_quatity', as: 'cart_change'
+  post 'carts/add/:id' => 'carts#add', :as => 'cart_add'
+  delete 'carts/remove/:id' => 'carts#delete', :as => 'cart_delete'
+  delete 'carts/empty' => 'carts#empty', :as => 'empty_cart'
 end
