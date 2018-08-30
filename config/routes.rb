@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', registrations: 'users/registrations'
   }
   root 'products#index'
-  resource :products
+  resources :products
 
   # Custom cart/session cart
   get 'carts' => 'carts#index', :as => 'cart_index'

@@ -54,7 +54,6 @@ class CartsController < ApplicationController
       if current_user
         current_user.cart.items = session[:carts] if session[:carts]
         current_user.cart.save!
-        session[:carts].clear
       end
     end
 
