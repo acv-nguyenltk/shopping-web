@@ -1,16 +1,12 @@
 class CartsController < ApplicationController
   before_action :init
-  before_action :get_cart
-  after_action :sync_data
+  before_action :check_and_get_params_id
+  after_action :sync_data, except: %[empty index]
   def index
-    @products = []
-    session[:carts].each do |key, val|
-      @products << Product.find(key)
-    end
+    @products = Product.where(id: session[:carts].keys)
   end
 
   def change_quatity
-    # binding.pry
     if session[:carts].keys.include?(@product.id.to_s)
       if params[:quatity].to_i <= 0
         session[:carts].delete(@product.id.to_s)
@@ -38,6 +34,7 @@ class CartsController < ApplicationController
 
   def empty
     session[:carts].clear
+    sync_data
     render :index
   end
   private
@@ -45,7 +42,7 @@ class CartsController < ApplicationController
       session[:carts] ||= Hash.new
     end
 
-    def get_cart
+    def check_and_get_params_id
       return if params[:id].blank?
       @product = Product.find(params[:id].to_s)
     end
@@ -57,7 +54,4 @@ class CartsController < ApplicationController
       end
     end
 
-    def merge_data
-
-    end
 end
