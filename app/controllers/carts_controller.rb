@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
-  before_action :init
+  before_action :init, except: %i[empty]
   before_action :check_and_get_params_id
-  after_action :sync_data, except: %[empty index]
+  after_action :sync_data, except: %i[empty index]
   def index
     @products = Product.where(id: session[:carts].keys)
   end
