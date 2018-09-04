@@ -24,7 +24,7 @@ class CartsController < ApplicationController
     else
       session[:carts][@product.id.to_s] = 1
     end
-    @count = Product.where(id: session[:carts].keys).pluck.count
+    @count = Product.where(id: session[:carts].keys).pluck.size
   end
 
   def delete
@@ -37,7 +37,7 @@ class CartsController < ApplicationController
   def empty
     session[:carts].clear
     sync_data
-    render :index
+    redirect_to cart_index_path
   end
   private
     def init
@@ -55,5 +55,4 @@ class CartsController < ApplicationController
         current_user.cart.save!
       end
     end
-
 end
