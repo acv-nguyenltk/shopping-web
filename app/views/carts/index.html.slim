@@ -16,9 +16,9 @@ table.table
           td= product.name
           td= product.price
           td
-            = form_for Cart.new, url: cart_change_path(id: product.id), method: :post do |f|
+            = form_for Cart.new, url: cart_change_path(id: product.id), remote: true do |f|
               input name="quatity" type="number" value="#{session[:carts][product.id.to_s]}" /
               = f.submit class: 'btn btn-primary'
-          td= link_to 'Delete Item', cart_delete_path(id: product.id), method: :delete , class: 'btn btn-primary'
-          td= session[:carts][product.id.to_s] * product.price
+          td= link_to 'Delete Item', cart_delete_path(id: product.id), method: :delete , class: 'btn btn-primary', remote: true
+          td#totalprice = session[:carts][product.id.to_s] * product.price
 = link_to 'Empty Cart', empty_cart_path, method: :delete, class: 'btn btn-primary'

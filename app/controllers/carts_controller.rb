@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   end
 
   def change_quatity
+    product = Product.find(params[:id])
     if session[:carts].keys.include?(@product.id.to_s)
       if params[:quatity].to_i <= 0
         session[:carts].delete(@product.id.to_s)
@@ -14,7 +15,7 @@ class CartsController < ApplicationController
         session[:carts][@product.id.to_s] = params[:quatity].to_i
       end
     end
-    redirect_to cart_index_path
+    @price = product.price * params[:quatity].to_i
   end
 
   def add
@@ -23,6 +24,7 @@ class CartsController < ApplicationController
     else
       session[:carts][@product.id.to_s] = 1
     end
+    @count = Product.where(id: session[:carts].keys).pluck.count
   end
 
   def delete
