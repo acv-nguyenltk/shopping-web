@@ -15,7 +15,7 @@ class CartsController < ApplicationController
         session[:carts][@product.id.to_s] = params[:quatity].to_i
       end
     end
-    @price = product.price * params[:quatity].to_i
+    @subTotal = product.price * params[:quatity].to_i
   end
 
   def add
@@ -51,6 +51,7 @@ class CartsController < ApplicationController
 
     def sync_data
       if current_user
+        Cart.create(user: current_user) if current_user.cart.blank?
         current_user.cart.items = session[:carts] if session[:carts]
         current_user.cart.save!
       end

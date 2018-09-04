@@ -20,5 +20,5 @@ table.table
               input name="quatity" type="number" value="#{session[:carts][product.id.to_s]}" /
               = f.submit class: 'btn btn-primary'
           td= link_to 'Delete Item', cart_delete_path(id: product.id), method: :delete , class: 'btn btn-primary', remote: true
-          td#totalprice = session[:carts][product.id.to_s] * product.price
+          td id=('subTotal-'+product.id.to_s) = session[:carts][product.id.to_s] * product.price
 = link_to 'Empty Cart', empty_cart_path, method: :delete, class: 'btn btn-primary'
