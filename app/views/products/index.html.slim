@@ -6,5 +6,6 @@
       .card-body
         h5.card-title= product.name
         h5.card-title= product.price
-        a.btn.btn-primary href="#"  Go somewhere
+        = link_to 'Detail', product_path(product), class: 'btn btn-primary'
+        = link_to 'Add this product', cart_add_path(id: product.id), method: :post, class: 'btn btn-primary', remote: true
 = paginate @products

@@ -3,8 +3,9 @@ require 'faker'
 Product.destroy_all
 Category.destroy_all
 User.destroy_all
+Cart.destroy_all
 
-tables = ['products', 'categories', 'users']
+tables = ['products', 'categories', 'users', 'carts']
 start_id = 1
 
 tables.each do |table|
