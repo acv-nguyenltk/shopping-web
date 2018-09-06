@@ -18,10 +18,11 @@ h2
     = f.label :phoneNumber
     br
     = f.text_field :phoneNumber, autofocus: true, autocomplete: "phoneNumber"
-  .field
-    = f.label :address
-    br
-    = f.text_field :address, autofocus: true, autocomplete: "address"
+    #addresses
+      = f.fields_for :addresses do |address|
+        = render 'address_fields', f: address
+      .links
+        = link_to_add_association 'Add Addresses', f, :addresses
   .field
     = f.label :password
     - if @minimum_password_length
