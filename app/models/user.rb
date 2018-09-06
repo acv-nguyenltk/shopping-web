@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_one :cart, dependent: :destroy
   has_many :addresses, inverse_of: :user
 
+  # validates :firstname, :lastname, :phoneNumber, presence: true
+
   accepts_nested_attributes_for :addresses,
               reject_if: lambda {|attrs| attrs['line1', 'country_code'].blank?},
               allow_destroy: true
