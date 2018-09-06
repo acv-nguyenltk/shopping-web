@@ -35,6 +35,8 @@ gem 'faker'
 gem 'kaminari'
 # Add devise
 gem 'devise'
+# Add cocoon
+gem 'cocoon'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
