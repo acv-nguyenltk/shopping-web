@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # validates :firstname, :lastname, :phoneNumber, presence: true
 
   accepts_nested_attributes_for :addresses,
-              reject_if: lambda {|attrs| attrs['line1', 'country_code'].blank?},
+              reject_if: %w[line1 country_code].nil?,
               allow_destroy: true
 
 end
