@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
   has_many :addresses, inverse_of: :user
+  has_many :orders, dependent: true
 
   # validates :firstname, :lastname, :phoneNumber, presence: true
 
