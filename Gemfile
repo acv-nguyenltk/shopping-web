@@ -37,6 +37,10 @@ gem 'kaminari'
 gem 'devise'
 # Add cocoon
 gem 'cocoon'
+# Add country_select and countries
+gem 'countries'
+gem 'country_select', '~> 3.1'
+gem 'enumerize'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

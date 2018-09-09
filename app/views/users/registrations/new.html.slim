@@ -22,7 +22,7 @@ h2
       = f.fields_for :addresses do |address|
         = render 'address_fields', f: address
       .links
-        = link_to_add_association 'Add Addresses', f, :addresses
+        = link_to_add_association 'Add Addresses', f, :addresses, class: 'btn btn-primary'
   .field
     = f.label :password
     - if @minimum_password_length
@@ -37,5 +37,5 @@ h2
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
-    = f.submit "Sign up"
+    = f.submit "Sign up", class: 'btn btn-primary'
 = render "users/shared/links"
