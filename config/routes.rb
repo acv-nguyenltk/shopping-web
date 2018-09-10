@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   post 'carts/add/:id' => 'carts#add', :as => 'cart_add'
   delete 'carts/remove/:id' => 'carts#delete', :as => 'cart_delete'
   delete 'carts/empty' => 'carts#empty', :as => 'empty_cart'
+
+  resources :orders, only: [:index, :create] do
+    collection do
+      post 'checkout'
+      get 'execute_payment'
+    end
+  end
 end

@@ -6,23 +6,24 @@ h2
   .field
     = f.label :email
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
   .field
     = f.label :firstname
     br
-    = f.text_field :firstname, autofocus: true, autocomplete: "firstname"
+    = f.text_field :firstname, autofocus: true, autocomplete: "firstname", class: 'form-control'
   .field
     = f.label :lastname
     br
-    = f.text_field :lastname, autofocus: true, autocomplete: "lastname"
+    = f.text_field :lastname, autofocus: true, autocomplete: "lastname", class: 'form-control'
   .field
     = f.label :phoneNumber
     br
-    = f.text_field :phoneNumber, autofocus: true, autocomplete: "phoneNumber"
-  .field
-    = f.label :address
-    br
-    = f.text_field :address, autofocus: true, autocomplete: "address"
+    = f.text_field :phoneNumber, autofocus: true, autocomplete: "phoneNumber", class: 'form-control'
+    #addresses
+      = f.fields_for :addresses do |address|
+        = render 'address_fields', f: address
+      .links
+        = link_to_add_association 'Add Addresses', f, :addresses, class: 'btn btn-primary'
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
       | Currently waiting confirmation for:
@@ -32,7 +33,7 @@ h2
     i
       | (leave blank if you don't want to change it)
     br
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "new-password", class: 'form-control'
     - if @minimum_password_length
       br
       em
@@ -41,18 +42,18 @@ h2
   .field
     = f.label :password_confirmation
     br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
   .field
     = f.label :current_password
     i
       | (we need your current password to confirm your changes)
     br
-    = f.password_field :current_password, autocomplete: "current-password"
+    = f.password_field :current_password, autocomplete: "current-password", class: 'form-control'
   .actions
-    = f.submit "Update"
+    = f.submit "Update", class: 'btn btn-primary'
 h3
   | Cancel my account
 p
   | Unhappy?
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary'
+= link_to "Back", :back, class: 'btn btn-primary'

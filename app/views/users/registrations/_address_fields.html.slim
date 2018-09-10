@@ -1,0 +1,27 @@
+.nested-fields
+  .field
+    = f.label :line1
+    br
+    = f.text_field :line1, class: 'form-control'
+    br
+    = f.label :line2
+    br
+    = f.text_field :line2, class: 'form-control'
+    br
+    = f.label :city
+    br
+    = f.text_field :city, class: 'form-control'
+    br
+    = f.label :country_code
+    br
+    = f.country_select :country_code, {}, class: 'form-control'
+    br
+    = f.label :postal_code
+    br
+    = f.text_field :postal_code, class: 'form-control'
+    br
+    = f.label :state
+    br
+    = f.text_field :state, class: 'form-control'
+  .field
+  = link_to_remove_association "Remove address", f, class: 'btn btn-primary'

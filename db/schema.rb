@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_29_130209) do
+ActiveRecord::Schema.define(version: 2018_09_06_122443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "line1"
+    t.text "line2"
+    t.text "city"
+    t.string "country_code", limit: 2
+    t.text "postal_code"
+    t.text "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.json "items", default: {}
@@ -27,6 +40,19 @@ ActiveRecord::Schema.define(version: 2018_08_29_130209) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "phoneNumber"
+    t.string "shipping_address"
+    t.decimal "total_amount", precision: 10, scale: 2
+    t.string "note"
+    t.json "date_order", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,7 +78,6 @@ ActiveRecord::Schema.define(version: 2018_08_29_130209) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "address"
     t.string "phoneNumber"
     t.string "firstname"
     t.string "lastname"

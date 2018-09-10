@@ -35,6 +35,14 @@ gem 'faker'
 gem 'kaminari'
 # Add devise
 gem 'devise'
+# Add cocoon
+gem 'cocoon'
+# Add country_select and countries
+gem 'countries'
+gem 'country_select', '~> 3.1'
+gem 'enumerize'
+# Add paypal checkout
+gem 'paypal-sdk-rest'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

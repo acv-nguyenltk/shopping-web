@@ -4,8 +4,9 @@ Product.destroy_all
 Category.destroy_all
 User.destroy_all
 Cart.destroy_all
+Address.destroy_all
 
-tables = ['products', 'categories', 'users', 'carts']
+tables = ['products', 'categories', 'users', 'carts', 'addresses']
 start_id = 1
 
 tables.each do |table|
@@ -19,8 +20,7 @@ User.create(
   firstname: 'nguyen',
   lastname: 'le',
   password: '123456',
-  phoneNumber: '12345678',
-  address: 'ascb'
+  phoneNumber: '12345678'
 )
 
 2.times do
