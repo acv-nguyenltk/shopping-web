@@ -1,13 +1,12 @@
 class CartsController < ApplicationController
   before_action :init, except: %i[empty]
   before_action :check_and_get_params_id
-  after_action :sync_data, except: %i[empty index]
+  after_action :sync_data
   def index
     @products = Product.where(id: session[:carts].keys)
   end
 
   def change_quatity
-    product = Product.find(params[:id])
     if session[:carts].keys.include?(@product.id.to_s)
       if params[:quatity].to_i <= 0
         session[:carts].delete(@product.id.to_s)
@@ -15,7 +14,7 @@ class CartsController < ApplicationController
         session[:carts][@product.id.to_s] = params[:quatity].to_i
       end
     end
-    @subTotal = product.price * params[:quatity].to_i
+    @subTotal = @product.price * params[:quatity].to_i
   end
 
   def add
