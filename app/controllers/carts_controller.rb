@@ -1,13 +1,14 @@
 class CartsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :init, except: %i[empty]
   before_action :check_and_get_params_id
   after_action :sync_data, except: %i[empty index]
   def index
     @products = Product.where(id: session[:carts].keys)
+    render json: { data_product: @products, data_session: session[:carts] }
   end
 
   def change_quatity
-    product = Product.find(params[:id])
     if session[:carts].keys.include?(@product.id.to_s)
       if params[:quatity].to_i <= 0
         session[:carts].delete(@product.id.to_s)
@@ -16,6 +17,7 @@ class CartsController < ApplicationController
       end
     end
     @subTotal = product.price * params[:quatity].to_i
+    render json: { data_session: session[:carts], data_quantity: params[:quatity] }
   end
 
   def add
@@ -24,7 +26,7 @@ class CartsController < ApplicationController
     else
       session[:carts][@product.id.to_s] = 1
     end
-    @count = Product.where(id: session[:carts].keys).pluck.size
+    render json: { data_session: session[:carts] }
   end
 
   def delete

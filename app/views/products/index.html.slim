@@ -1,11 +1,13 @@
 = paginate @products
 #product-page.row
   - @products.each do |product|
-    .card.col-md-3.text-center
+    .card.col-md-3.text-center id=('data-'+product.id.to_s)
       img.card-img-top alt=("Card image cap") src="#{product.imgUrl}" /
       .card-body
         h5.card-title= product.name
         h5.card-title= product.price
         = link_to 'Detail', product_path(product), class: 'btn btn-primary'
-        = link_to 'Add this product', cart_add_path(id: product.id), method: :post, class: 'btn btn-primary', remote: true
+        br
+        a.btn.btn-primary.add_item data-id=product.id.to_s
+          | Add product
 = paginate @products
