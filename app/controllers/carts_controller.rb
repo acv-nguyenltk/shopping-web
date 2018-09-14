@@ -5,10 +5,7 @@ class CartsController < ApplicationController
   after_action :sync_data, except: %i[empty index]
   def index
     @products = Product.where(id: session[:carts].keys)
-      respond_to do |format|
-        format.json  { render json: { data_product: @products,
-                                    data_session: session[:carts] }}
-    end
+    render json: { data_product: @products, data_session: session[:carts] }
   end
 
   def change_quatity
@@ -20,6 +17,7 @@ class CartsController < ApplicationController
       end
     end
     @subTotal = product.price * params[:quatity].to_i
+    render json: { data_session: session[:carts], data_quantity: params[:quatity] }
   end
 
   def add
