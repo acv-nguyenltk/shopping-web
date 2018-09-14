@@ -16,17 +16,15 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           .dropdown-divider
           a.dropdown-item[href="#"]
             | Something else here
+  a.btn.btn-primary.open_cart
+    | Cart
     - if current_user
-      a.navbar-brand
-        = link_to "Cart", cart_index_path
-      a.navbar-brand
-        = link_to current_user.firstname, edit_user_registration_path
-      a.navbar-brand
+        a.navbar-brand
+          = link_to current_user.firstname, edit_user_registration_path
+        a.navbar-brand
         = link_to "Logout", destroy_user_session_path, method: :delete
     - else
-      a.navbar-brand
-        = link_to "Cart", cart_index_path
-      a.navbar-brand
-        = link_to "Register", new_user_registration_path
-      a.navbar-brand
+        a.navbar-brand
+          = link_to "Register", new_user_registration_path
+        a.navbar-brand
         = link_to "Login", new_user_session_path
