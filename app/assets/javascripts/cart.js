@@ -1,8 +1,3 @@
-var req = function(url, method){
-  $.ajax({
-
-  })
-};
 $(document).ready(function(){
 
   $(document).on('click', '.open_cart',function(){
@@ -14,6 +9,7 @@ $(document).ready(function(){
       appendDataToPopup(res);
       $('#cart .modal-body').html(appendDataToPopup(res));
       $('#cart').modal('show');
+      countCart();
     });
 
   });
@@ -92,6 +88,15 @@ $(document).ready(function(){
   });
 
 });
+
+function countCart(){
+  var count = 0;
+  $('.cart-item').each(function(){
+    count += parseInt($(this).val());
+  });
+  $("a:contains('Cart')").text('Cart(' + count + ')');
+};
+
 
 function appendDataToPopup(res){
   var html = '';
