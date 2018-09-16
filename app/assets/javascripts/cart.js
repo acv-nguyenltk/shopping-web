@@ -1,4 +1,8 @@
+var req = function(url, method){
+  $.ajax({
 
+  })
+};
 $(document).ready(function(){
 
   $(document).on('click', '.open_cart',function(){
@@ -48,37 +52,43 @@ $(document).ready(function(){
   });
 
   $(document).on('click','.delete_item',function(){
+    var r = confirm('Are you sure!');
     var self = $(this);
-    req = $.ajax({
-      url: '/carts/remove/' + $(this).data('id'),
-      method: 'DELETE'
-    });
-    
-    req.done(function(){
-      self.parent().remove();
-      alert('Delete item cart is successed');
-    });
+    if (r == true){
+      req = $.ajax({
+        url: '/carts/remove/' + $(this).data('id'),
+        method: 'DELETE'
+      });
 
-    req.fail(function(){
-      alert('Delete item cart is failed');
-    })
+      req.done(function(){
+        self.parent().remove();
+        alert('Delete item cart is successed');
+      });
+
+      req.fail(function(){
+        alert('Delete item cart is failed');
+      });
+    }
   });
 
   $(document).on('click', '.empty_cart', function(){
-    req = $.ajax({
-      url: '/carts/empty',
-      method: 'DELETE'
-    });
+    var r = confirm('Are you sure!');
+    if (r == true){
+      req = $.ajax({
+        url: '/carts/empty',
+        method: 'DELETE'
+      });
 
-    req.done(function(res){
-      appendDataToPopup(res);
-      $('#cart .modal-body').html(appendDataToPopup(res));
-      alert('Empty cart is successed');
-    });
+      req.done(function(res){
+        appendDataToPopup(res);
+        $('#cart .modal-body').html(appendDataToPopup(res));
+        alert('Empty cart is successed');
+      });
 
-    req.fail(function(){
-      alert('Empty')
-    })
+      req.fail(function(){
+        alert('Empty')
+      });
+    };
   });
 
 });
