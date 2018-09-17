@@ -17,3 +17,5 @@
 //= require bootstrap
 //= require turbolinks
 //= require cart
+//= require product
+//= require list_product 

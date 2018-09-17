@@ -107,7 +107,7 @@ function appendDataToPopup(res){
                   '<div class="row">' +
                     '<div class="col-md-8">' +
                       '<img src="' + v.imgUrl + '" />' +
-                      '<div><a href="/products/' + v.id + '">' + v.name + '</a></div>' +
+                      '<div class="showItem" ><a onclick="showDetailProduct('+v.id+')" href="javascript:void(0)">' + v.name + '</a></div>' +
                       '<div>' + v.price + '$</div>' +
                       '<input class="cart-item" type="number" value="' + vv + '">' +
                       '<button type="button" class="btn btn-primary change_quantity" data-id="'+ v.id +'">Change</button>' +

@@ -18,6 +18,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
             | Something else here
   a.btn.btn-primary.open_cart
     | Cart
+  a.navbar-brand
+    = link_to 'List Product', list_products_path
     - if current_user
         a.navbar-brand
           = link_to current_user.firstname, edit_user_registration_path
