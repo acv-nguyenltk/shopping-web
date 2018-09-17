@@ -24,13 +24,12 @@ function updateProduct(id){
     type: 'PUT'
   });
 
-  req.done(function(data){
-    alert('dsadsa');
-
+  req.done(function(){
+    alert('Update is successed');
   });
-  req.fail(function(data){
-    debugger;
-    alert('something wrong')
+  
+  req.fail(function(){
+    alert('Update is failed');
   })
 }
 
