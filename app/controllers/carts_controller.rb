@@ -16,8 +16,8 @@ class CartsController < ApplicationController
         session[:carts][@product.id.to_s] = params[:quatity].to_i
       end
     end
-    @subTotal = product.price * params[:quatity].to_i
-    render json: { data_session: session[:carts], data_quantity: params[:quatity] }
+    @subTotal = @product.price * params[:quatity].to_i
+    render json: { data_session: session[:carts] }
   end
 
   def add
@@ -33,13 +33,13 @@ class CartsController < ApplicationController
     if session[:carts].keys.include?(@product.id.to_s)
       session[:carts].delete(@product.id.to_s)
     end
-    redirect_to cart_index_path
+    render json: { data_session: session[:carts] }
   end
 
   def empty
     session[:carts].clear
     sync_data
-    redirect_to cart_index_path
+    render json: { data_session: session[:carts] }
   end
   private
     def init
