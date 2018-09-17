@@ -3,10 +3,15 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', registrations: 'users/registrations'
   }
   root 'products#index'
-  resources :products
+  resources :products do
+    collection do
+      get :list
+    end
+  end
+
 
   # Custom cart/session cart
-  get 'carts' => 'carts#index', :as => 'cart_index'
+  get 'carts' => 'carts#index', as: 'cart_index'
   post 'carts/change/:id' => 'carts#change_quatity', as: 'cart_change'
   post 'carts/add/:id' => 'carts#add', :as => 'cart_add'
   delete 'carts/remove/:id' => 'carts#delete', :as => 'cart_delete'

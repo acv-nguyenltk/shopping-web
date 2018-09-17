@@ -1,0 +1,14 @@
+tr.sessionLoad data-id=product.id
+  td
+    img alt="" src=product.imgUrl style=("width:50%; height:50%;")
+  td
+    input#name disabled=true type="text" value=product.name
+  td
+    input#price disabled=true type="text" value=product.price
+  td
+    textarea#description disabled=true
+      =product.description
+  td
+    button.btn.btn-primary.edit-product type="button" Edit
+    button.btn.btn-primary.save-product.d-none type="button"  Save
+    button.btn.btn-primary.d-none.cancel-product type="button"  Cancel

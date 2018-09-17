@@ -1,0 +1,13 @@
+#product_list
+  h1 List Product
+  table.table
+    thead
+      tr
+        td Image
+        td Name
+        td Price
+        td Description
+        td
+        td
+    tbody
+      = render partial: 'product', collection: @products
